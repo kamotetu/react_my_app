@@ -13,6 +13,7 @@ Quill.register(Block, true);
 const formats = [
     'code-block',
     'div_blot',
+    'size',
 ];
 
 function CustomIcon () {
@@ -84,6 +85,7 @@ function App() {
                 onChange={setValue}
                 modules={modules}
                 formats={formats}
+                scrollingContainer={'html'}
             />
         </div>
     );
@@ -92,7 +94,15 @@ function App() {
 
 function QuillToolbar (props) {
     return (
-        <div id="toolbar" style={{display: 'flex'}}>
+        <div id="toolbar" style={{display: 'flex', position: 'sticky', top: '0', zIndex: '1'}}>
+            <span className="ql-formats">
+                <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                </select>
+            </span>
             <span className="ql-formats">
                 <button className="ql-code-block"></button>
             </span>
