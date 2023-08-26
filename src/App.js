@@ -1,19 +1,16 @@
 import './App.css';
 import {useState} from 'react';
+// 👇 react-quillを使うためのモジュールをimport
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+// 👇 fontawesomeの導入はこちらがわかりやすいのだ！ https://qiita.com/stin_dev/items/5755e14805e60718620c
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 
-const Quill = ReactQuill.Quill
-var Block = Quill.import('blots/block');
-Block.tagName = 'div';
-Quill.register(Block, true);
-
 const formats = [
     'code-block',
-    'div_blot',
     'size',
+    'div_blot',
 ];
 
 function CustomIcon () {
@@ -26,7 +23,7 @@ const modules = {
     toolbar: {
         container: "#toolbar",
         handlers: {
-            "addDivBlot": addDivBlot,
+            "addDivBlot": funcAddDivBlot,
         }
     },
 };
@@ -37,7 +34,7 @@ class DivBlot extends BlockEmbed {
         let node = super.create();
         node.style.display = 'flex';
         let img = document.createElement('img');
-        img.src = 'https://begien.com/image/beginner_engineer_blog.png';
+        img.src = 'https://begien.com/image/BeginnerEngineerBlogTopImage.png';
         img.alt = 'begien.com';
         img.style.width = '50%';
         img.style.height = 'auto';
@@ -51,14 +48,14 @@ class DivBlot extends BlockEmbed {
     }
 }
 
+
 DivBlot.blotName = 'div_blot';
 DivBlot.tagName = 'div';
 DivBlot.className = 'beginner_engineer';
 
 Quill.register(DivBlot, true);
 
-
-function addDivBlot () {
+function funcAddDivBlot () {
     const quill = this.quill;
     const selection = quill.getSelection(true);
     let cursor_index = selection.index;
@@ -77,6 +74,7 @@ function App() {
 
     return (
         <div className="App" style={app_style}>
+            <div style={{textAlign: 'left'}}>react</div>
             <QuillToolbar
             />
             <ReactQuill
@@ -85,20 +83,18 @@ function App() {
                 onChange={setValue}
                 modules={modules}
                 formats={formats}
-                scrollingContainer={'html'}
             />
         </div>
     );
 }
 
-
 function QuillToolbar (props) {
     return (
-        <div id="toolbar" style={{display: 'flex', position: 'sticky', top: '0', zIndex: '1'}}>
+        <div id="toolbar" style={{display: 'flex'}}>
             <span className="ql-formats">
-                <select class="ql-size">
+                <select className="ql-size" defaultValue="normal">
                     <option value="small"></option>
-                    <option selected></option>
+                    <option value="normal"></option>
                     <option value="large"></option>
                     <option value="huge"></option>
                 </select>
