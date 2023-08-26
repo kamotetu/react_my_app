@@ -1,7 +1,7 @@
 import './App.css';
 import {useState} from 'react';
 // 👇 react-quillを使うためのモジュールをimport
-import ReactQuill from 'react-quill';
+import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 // 👇 fontawesomeの導入はこちらがわかりやすいのだ！ https://qiita.com/stin_dev/items/5755e14805e60718620c
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
