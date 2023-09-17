@@ -1,3 +1,5 @@
+demo: https://kamotetu.github.io/react_my_app/
+
 # My Sample App
 
 # Getting Started with Create React App
@@ -71,4 +73,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-demo: https://kamotetu.github.io/react_my_app/
